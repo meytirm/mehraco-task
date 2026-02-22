@@ -4,7 +4,7 @@ import { useProductFilterStore } from '../store/product-filter';
 
 export const useFilteredProducts = () => {
   const { data, ...rest } = useProducts();
-  const { minPrice, maxPrice, brands, isStockOnly } = useProductFilterStore();
+  const { minPrice, maxPrice, brands, inStockOnly } = useProductFilterStore();
 
   const filteredData = useMemo(() => {
     if (!data?.data.products) return data;
@@ -13,12 +13,12 @@ export const useFilteredProducts = () => {
       if (minPrice && product.price < minPrice) return false;
       if (maxPrice && product.price > maxPrice) return false;
       if (brands.length > 0 && !brands.includes(product.brand)) return false;
-      if (isStockOnly && product.stock <= 0) return false;
+      if (inStockOnly && product.stock <= 0) return false;
       return true;
     });
 
     return { ...data, items };
-  }, [data, minPrice, maxPrice, brands, isStockOnly]);
+  }, [data, minPrice, maxPrice, brands, inStockOnly]);
 
   return { data: filteredData, ...rest };
 };
