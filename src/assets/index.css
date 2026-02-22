@@ -1,1 +1,13 @@
 @import 'tailwindcss';
+
+@theme {
+  --color-surface: #f8f8f8;
+  --color-foreground: #231f20;
+  --color-divider: #e9e9e9;
+  --color-muted: #918f90;
+  --color-placeholder: #918f8f;
+}
+
+body {
+  @apply bg-surface text-foreground;
+}
