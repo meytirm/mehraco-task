@@ -10,6 +10,7 @@ type ProductFilterState = {
   limit: number;
   minPrice: number | null;
   maxPrice: number | null;
+  inStockOnly: boolean;
 
   setCategory: (v: string | null) => void;
   setSort: (v: ProductFilterState['sortBy']) => void;
@@ -18,6 +19,7 @@ type ProductFilterState = {
   setPage: (v: number) => void;
   setMinPrice: (v: number | null) => void;
   setMaxPrice: (v: number | null) => void;
+  setInStockOnly: (v: boolean) => void;
 };
 
 export const useProductFilterStore = create<ProductFilterState>((set) => ({
@@ -30,6 +32,7 @@ export const useProductFilterStore = create<ProductFilterState>((set) => ({
   limit: 10,
   minPrice: null,
   maxPrice: null,
+  inStockOnly: false,
 
   setMinPrice: (minPrice) => set({ minPrice }),
   setMaxPrice: (maxPrice) => set({ maxPrice }),
@@ -38,4 +41,5 @@ export const useProductFilterStore = create<ProductFilterState>((set) => ({
   setOrder: (order) => set({ order }),
   setSearch: (search) => set({ search, skip: 1 }),
   setPage: (skip) => set({ skip }),
+  setInStockOnly: (inStockOnly) => set({ inStockOnly }),
 }));
