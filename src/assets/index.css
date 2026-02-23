@@ -27,6 +27,15 @@ body {
   @apply flex gap-10 items-center;
 }
 
+/* Dialog */
+.dialog {
+  @apply rounded-lg border-0 shadow-lg w-full max-w-md m-auto
+}
+
+.dialog-content {
+  @apply p-6
+}
+
 /* Input */
 .input-wrapper {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
