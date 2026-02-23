@@ -35,3 +35,7 @@ body {
 .input-field {
   @apply placeholder:text-placeholder text-base py-3 px-2 outline-none border-none flex-1;
 }
+
+.products-header {
+  @apply flex gap-10 items-center;
+}
