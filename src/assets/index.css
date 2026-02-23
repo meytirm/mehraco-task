@@ -65,3 +65,42 @@ body {
 .switch.on .switch-toggle {
   transform: translateX(25px);
 }
+
+/*Product Wrapper*/
+
+.product-wrapper {
+  @apply grid grid-cols-4 gap-8;
+}
+
+/*Product Card*/
+.product-card {
+  @apply bg-white rounded-2xl bg-white h-[375px] p-6;
+}
+
+.product-image {
+  @apply rounded-2xl bg-surface h-[200px];
+
+  img {
+    @apply h-full w-full object-contain;
+  }
+}
+
+.product-title {
+  @apply text-base text-foreground font-medium mt-4;
+}
+
+.product-discount {
+  @apply flex items-center gap-2 mt-4;
+}
+
+.product-discount-percentage {
+  @apply text-xs p-1 bg-foreground text-white rounded-lg;
+}
+
+.product-discount-price {
+  @apply text-base text-muted line-through;
+}
+
+.product-price {
+  @apply text-2xl text-foreground font-medium mt-2;
+}
