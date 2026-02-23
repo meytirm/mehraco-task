@@ -1,5 +1,7 @@
+import { ProductPage } from './components/page/products/ProductPage.tsx';
+
 function App() {
-  return <div>hello</div>;
+  return <ProductPage />;
 }
 
 export default App;
