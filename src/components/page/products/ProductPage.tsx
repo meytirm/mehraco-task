@@ -3,11 +3,19 @@ import { useFilteredProducts } from '../../../hooks/useFilteredProducts.ts';
 import { Select } from '../../ui/Select.tsx';
 import { Switch } from '../../ui/Switch.tsx';
 import { ProductsWrapper } from './ProductsWrapper.tsx';
+import PriceRangeSlider from '../../common/PriceRangeSlider.tsx';
 
 export function ProductPage() {
   const { data, isFetching, isLoading, isError } = useFilteredProducts();
 
-  const products = data && data.data;
+  const products = data?.data;
+  let minPrice = 0;
+  let maxPrice = 1;
+  if (products) {
+    const prices = products.products.map((product) => product.price);
+    minPrice = Math.min(...prices);
+    maxPrice = Math.max(...prices);
+  }
   return (
     <div>
       <div className="products-header">
@@ -30,6 +38,7 @@ export function ProductPage() {
       {isError && 'error'}
       <Switch label={'in stock'} />
       {products && <ProductsWrapper products={products.products} />}
+      <PriceRangeSlider min={minPrice} max={maxPrice} />
     </div>
   );
 }
