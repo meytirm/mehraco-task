@@ -34,7 +34,24 @@ body {
 }
 
 .input-field {
-  @apply placeholder:text-placeholder text-base py-3 px-2 outline-none border-none flex-1;
+  @apply placeholder:text-placeholder text-base py-3 px-2 outline-none border-none w-full;
+}
+
+/*PriceRangeSlider*/
+.price-range-slider {
+  @apply flex flex-col w-40 ;
+}
+
+.price-range-slider-inputs {
+  @apply flex items-center gap-2 w-full;
+
+  div {
+    @apply w-full;
+  }
+}
+
+.price-range-slider-values {
+  @apply flex justify-between mt-4 font-semibold;
 }
 
 /* Switch */
