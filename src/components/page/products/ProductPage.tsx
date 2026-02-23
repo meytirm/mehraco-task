@@ -4,9 +4,12 @@ import { Select } from '../../ui/Select.tsx';
 import { Switch } from '../../ui/Switch.tsx';
 import { ProductsWrapper } from './ProductsWrapper.tsx';
 import PriceRangeSlider from '../../common/PriceRangeSlider.tsx';
+import Dialog, { type DialogHandle } from '../../ui/Dialog.tsx';
+import { useRef } from 'react';
 
 export function ProductPage() {
   const { data, isFetching, isLoading, isError } = useFilteredProducts();
+  const dialogRef = useRef<DialogHandle | null>(null);
 
   const products = data?.data;
   let minPrice = 0;
@@ -39,6 +42,22 @@ export function ProductPage() {
       <Switch label={'in stock'} />
       {products && <ProductsWrapper products={products.products} />}
       <PriceRangeSlider min={minPrice} max={maxPrice} />
+      <button
+        onClick={() => dialogRef.current?.open()}
+        className="mt-4 px-3 py-1 bg-gray-300 rounded hover:bg-gray-400"
+      >
+        Close
+      </button>
+      <Dialog ref={dialogRef}>
+        <h2 className="text-lg font-bold mb-4">Centered Dialog</h2>
+        <p>Click outside or the button below to close.</p>
+        <button
+          onClick={() => dialogRef.current?.close()}
+          className="mt-4 px-3 py-1 bg-gray-300 rounded hover:bg-gray-400"
+        >
+          Close
+        </button>
+      </Dialog>
     </div>
   );
 }
