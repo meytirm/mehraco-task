@@ -8,6 +8,30 @@
   --color-placeholder: #918f8f;
 }
 
+@utility container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 1280px;
+
+  @apply lg:mt-24 mt-10;
+}
+
 body {
-  @apply bg-surface text-foreground;
+  @apply bg-surface text-foreground container;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  padding: 0 12px;
+}
+
+.input-field {
+  @apply placeholder:text-placeholder text-base py-3 px-2 outline-none border-none flex-1;
 }
