@@ -1,6 +1,6 @@
 import type { PaginatedResponse } from '../../type/api.type.ts';
 
-interface Product {
+export interface Product {
   id: number;
   title: string;
   description: string;
