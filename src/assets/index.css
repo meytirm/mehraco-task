@@ -23,19 +23,57 @@ body {
   @apply bg-surface text-foreground container;
 }
 
+.products-header {
+  @apply flex gap-10 items-center;
+}
+
+/* Input */
 .input-wrapper {
-  display: flex;
-  align-items: center;
-  background: white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  border-radius: 10px;
-  padding: 0 12px;
+  @apply flex items-center bg-white rounded-[10px] py-0 px-3;
 }
 
 .input-field {
   @apply placeholder:text-placeholder text-base py-3 px-2 outline-none border-none flex-1;
 }
 
-.products-header {
-  @apply flex gap-10 items-center;
+/* Switch */
+.switch-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: sans-serif;
+}
+
+.switch-label {
+  font-size: 14px;
+}
+
+.switch {
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.switch.on {
+  background-color: #000;
+}
+
+.switch-toggle {
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: transform 0.2s;
+}
+
+.switch.on .switch-toggle {
+  transform: translateX(20px);
 }
