@@ -47,7 +47,7 @@ body {
 }
 
 .switch {
-  @apply w-[45px] h-[25px] bg-divider rounded-2xl relative cursor-pointer;
+  @apply w-[50px] h-[24px] bg-divider rounded-2xl relative cursor-pointer;
   transition: background-color 0.2s;
 }
 
@@ -63,5 +63,5 @@ body {
 }
 
 .switch.on .switch-toggle {
-  transform: translateX(21px);
+  transform: translateX(25px);
 }
