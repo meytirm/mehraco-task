@@ -1,6 +1,6 @@
 import type { Product } from '../../../services/products/products.type.ts';
 
-export function ProductCard({ product }: Props) {
+export function ProductCard({ product }: Readonly<Props>) {
   return (
     <div className="product-card">
       <div className="product-image">
