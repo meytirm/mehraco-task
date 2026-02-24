@@ -29,7 +29,7 @@ body {
 
 /* Dialog */
 .dialog {
-  @apply rounded-lg border-0 shadow-lg w-full max-w-md m-auto
+  @apply rounded-lg border-0 shadow-lg m-auto w-[800px] max-w-[90vw];
 }
 
 .dialog-content {
@@ -129,4 +129,13 @@ body {
 
 .product-price {
   @apply text-2xl text-foreground font-medium mt-2;
+}
+
+/*Product Dialog*/
+.product-dialog-content {
+  @apply flex gap-4;
+
+  div {
+    @apply grow;
+  }
 }
