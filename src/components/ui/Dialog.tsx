@@ -7,9 +7,10 @@ export interface DialogHandle {
 
 interface DialogProps {
   children: ReactNode;
+  onClose: () => void;
 }
 
-const Dialog = forwardRef<DialogHandle, DialogProps>(({ children }, ref) => {
+const Dialog = forwardRef<DialogHandle, DialogProps>(({ children, onClose }, ref) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   // Expose methods to parent
@@ -22,6 +23,7 @@ const Dialog = forwardRef<DialogHandle, DialogProps>(({ children }, ref) => {
   const handleBackdropClick = (e: MouseEvent<HTMLDialogElement>) => {
     if (e.target === dialogRef.current) {
       close();
+      onClose();
     }
   };
 

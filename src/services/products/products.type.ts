@@ -1,4 +1,4 @@
-import type { PaginatedResponse } from '../../type/api.type.ts';
+import type { PaginatedResponse } from '../../types/api.type.ts';
 
 export interface Product {
   id: number;

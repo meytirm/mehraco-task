@@ -29,7 +29,7 @@ body {
 
 /* Dialog */
 .dialog {
-  @apply rounded-lg border-0 shadow-lg w-full max-w-md m-auto
+  @apply rounded-lg border-0 shadow-lg m-auto w-[900px] max-w-[90vw] outline-none;
 }
 
 .dialog-content {
@@ -116,7 +116,7 @@ body {
 }
 
 .product-discount {
-  @apply flex items-center gap-2 mt-4;
+  @apply flex items-center gap-2;
 }
 
 .product-discount-percentage {
@@ -129,4 +129,54 @@ body {
 
 .product-price {
   @apply text-2xl text-foreground font-medium mt-2;
+}
+
+/*Product Dialog*/
+.product-dialog-content {
+  @apply flex gap-8;
+}
+
+/* ProductDialogInfo */
+.product-dialog-info {
+  @apply flex flex-col justify-between h-full;
+}
+
+.product-dialog-info-category {
+  @apply text-sm text-muted;
+}
+
+.product-dialog-info-title {
+  @apply text-2xl font-black text-black;
+}
+
+.product-dialog-info-title-wrapper {
+  @apply flex gap-4 items-center;
+}
+
+.product-dialog-info-review-wrapper {
+  @apply flex items-center gap-2;
+}
+
+.product-dialog-info-rating-wrapper {
+  @apply flex items-center gap-2
+}
+
+.product-dialog-info-rating {
+  @apply text-sm text-muted;
+}
+
+.product-dialog-info-divider {
+  @apply text-muted;
+}
+
+.product-dialog-info-review {
+  @apply text-muted text-sm;
+}
+
+.product-dialog-info-description {
+  @apply text-base text-muted leading-7;
+}
+
+.product-dialog-info-guarantee-box {
+  @apply flex flex-col gap-2 border border-surface rounded-xl p-4;
 }
