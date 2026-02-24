@@ -176,3 +176,7 @@ body {
 .product-dialog-info-description {
   @apply text-base text-muted leading-7;
 }
+
+.product-dialog-info-guarantee-box {
+  @apply flex flex-col gap-2 border border-surface rounded-xl p-4;
+}
