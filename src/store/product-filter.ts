@@ -8,8 +8,8 @@ export type ProductFilterState = {
   search: string;
   skip: number;
   limit: number;
-  minPrice: number;
-  maxPrice: number;
+  minPrice: number | null;
+  maxPrice: number | null;
   inStockOnly: boolean;
   priceSort: 'asc' | 'desc' | null;
 
@@ -18,8 +18,8 @@ export type ProductFilterState = {
   setOrder: (v: ProductFilterState['order']) => void;
   setSearch: (v: string) => void;
   setSkip: (v: number) => void;
-  setMinPrice: (v: number) => void;
-  setMaxPrice: (v: number) => void;
+  setMinPrice: (v: number | null) => void;
+  setMaxPrice: (v: number | null) => void;
   setInStockOnly: (v: boolean) => void;
   setPriceSort: (v: 'asc' | 'desc' | null) => void;
   setBrands: (v: { label: string; value: string }[]) => void;
@@ -33,8 +33,8 @@ export const useProductFilterStore = create<ProductFilterState>((set) => ({
   search: '',
   skip: 1,
   limit: 16,
-  minPrice: 1,
-  maxPrice: 2,
+  minPrice: null,
+  maxPrice: null,
   inStockOnly: true,
   priceSort: null,
 
