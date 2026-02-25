@@ -20,7 +20,6 @@ export function ProductsWrapper({ products }: Readonly<Props>) {
         </div>
       ))}
       <ProductDialog value={dialog} onChange={setDialog} product={data} isLoading={isPending} />
-      {data?.price}
     </div>
   );
 }
