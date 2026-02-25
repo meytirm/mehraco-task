@@ -23,7 +23,7 @@ export function ProductDialog({ value, onChange, product, isLoading = false }: R
       >
         <XIcon />
       </div>
-      <ProductDialogContent loading={isLoading} product={product} />
+      <ProductDialogContent isLoading={isLoading} product={product} />
     </Dialog>
   );
 }
