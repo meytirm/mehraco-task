@@ -26,6 +26,14 @@ export function ProductsWrapper({ products, isLoading = false }: Readonly<Props>
     );
   }
 
+  if (products.length === 0) {
+    return (
+      <div className="flex justify-center border border-divider p-4 bg-white rounded-xl">
+        There are no data products yet.
+      </div>
+    );
+  }
+
   return (
     <div className="product-wrapper">
       {products.map((product) => (
