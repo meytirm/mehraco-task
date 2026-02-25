@@ -1,5 +1,5 @@
 import { api } from '../api.ts';
-import type { Product, ProductsType } from './products.type.ts';
+import type { Category, Product, ProductsType } from './products.type.ts';
 
 export type ProductFilters = {
   category?: string | null;
@@ -25,7 +25,7 @@ function findById(id: number) {
 }
 
 function findAllCategories() {
-  return api.get<string[]>('/products/categories');
+  return api.get<Category[]>('/products/categories');
 }
 
 export const productsService = {
