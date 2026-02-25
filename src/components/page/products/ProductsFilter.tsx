@@ -129,7 +129,7 @@ export function ProductsFilter({ loading }: Readonly<Props>) {
           <PriceRangeSlider
             min={calculatedMinPrice}
             max={calculatedMaxPrice}
-            values={[minPrice, maxPrice]}
+            values={[minPrice ?? calculatedMinPrice, maxPrice ?? calculatedMaxPrice]}
             onChange={(values) => {
               setMinPrice(values[0]);
               setMaxPrice(values[1]);
