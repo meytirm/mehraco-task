@@ -3,8 +3,9 @@ import { ProductCard } from './ProductCard.tsx';
 import { ProductDialog } from './product-dialog/ProductDialog.tsx';
 import { useState } from 'react';
 import { useProduct } from '../../../hooks/useProduct.ts';
+import Skeleton from 'react-loading-skeleton';
 
-export function ProductsWrapper({ products }: Readonly<Props>) {
+export function ProductsWrapper({ products, isLoading = false }: Readonly<Props>) {
   const [dialog, setDialog] = useState(false);
   const { mutate: getProduct, data, isPending } = useProduct();
 
@@ -12,6 +13,27 @@ export function ProductsWrapper({ products }: Readonly<Props>) {
     getProduct(productId);
     setDialog(true);
   }
+
+  if (!products || isLoading) {
+    return (
+      <div className="product-wrapper">
+        {Array.from({ length: 16 }, (_, i) => (
+          <div key={i}>
+            <Skeleton width={'100%'} height={375} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (products.length === 0) {
+    return (
+      <div className="flex justify-center border border-divider p-4 bg-white rounded-xl">
+        There are no data products yet.
+      </div>
+    );
+  }
+
   return (
     <div className="product-wrapper">
       {products.map((product) => (
@@ -25,5 +47,6 @@ export function ProductsWrapper({ products }: Readonly<Props>) {
 }
 
 interface Props {
-  products: Product[];
+  products?: Product[];
+  isLoading?: boolean;
 }

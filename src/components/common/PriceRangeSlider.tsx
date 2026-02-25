@@ -33,9 +33,6 @@ export default function PriceRangeSlider({ min, max, onChange, values }: Readonl
   useEffect(() => {
     onChange([min, max]);
     console.log(min, max, values);
-    return () => {
-      console.log('cleanup');
-    };
   }, [min, max]);
 
   return (
