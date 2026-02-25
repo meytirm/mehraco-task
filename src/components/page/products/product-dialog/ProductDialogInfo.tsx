@@ -1,11 +1,13 @@
-import type { Product } from '../../../services/products/products.type.ts';
-import { Badge } from '../../ui/Badge.tsx';
+import type { Product } from '../../../../services/products/products.type.ts';
+import { Badge } from '../../../ui/Badge.tsx';
 import { BadgeCheck, HeartIcon, Package2Icon, StarIcon, TruckIcon } from 'lucide-react';
-import { ProductDiscount } from './ProductDiscount.tsx';
-import { Button } from '../../ui/Button.tsx';
+import { ProductDiscount } from '../ProductDiscount.tsx';
+import { Button } from '../../../ui/Button.tsx';
+import { applyDiscount } from '../../../../utils/utils.ts';
 
 export function ProductDialogInfo({ product }: Readonly<Props>) {
   const rating = Math.floor(product.rating * 10) / 10; // 4.64 to 4.6
+  const discountedPrice = applyDiscount(product.price, product.discountPercentage);
 
   return (
     <div className="product-dialog-info">
@@ -27,7 +29,7 @@ export function ProductDialogInfo({ product }: Readonly<Props>) {
       <div className="product-dialog-info-description">{product.description}</div>
       <div>
         <ProductDiscount price={product.price} discountPercentage={product.discountPercentage} />
-        <div className="product-price">$ {product.price}</div>
+        <div className="product-price">$ {discountedPrice}</div>
       </div>
       <div className="flex items-center gap-4 my-4">
         <Button className={'grow'}>ADD TO CART</Button>

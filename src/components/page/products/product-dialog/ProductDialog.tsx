@@ -1,6 +1,6 @@
-import Dialog, { type DialogHandle } from '../../ui/Dialog.tsx';
+import Dialog, { type DialogHandle } from '../../../ui/Dialog.tsx';
 import { useEffect, useRef } from 'react';
-import type { Product } from '../../../services/products/products.type.ts';
+import type { Product } from '../../../../services/products/products.type.ts';
 import { ProductDialogContent } from './ProductDialogContent.tsx';
 import { XIcon } from 'lucide-react';
 

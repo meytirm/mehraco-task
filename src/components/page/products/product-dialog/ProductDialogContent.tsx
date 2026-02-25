@@ -1,4 +1,4 @@
-import type { Product } from '../../../services/products/products.type.ts';
+import type { Product } from '../../../../services/products/products.type.ts';
 import { ProductDialogSwiper } from './ProductDialogSwiper.tsx';
 import { ProductDialogInfo } from './ProductDialogInfo.tsx';
 
