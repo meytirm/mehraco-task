@@ -17,7 +17,7 @@ export type ProductFilterState = {
   setSort: (v: ProductFilterState['sortBy']) => void;
   setOrder: (v: ProductFilterState['order']) => void;
   setSearch: (v: string) => void;
-  setPage: (v: number) => void;
+  setSkip: (v: number) => void;
   setMinPrice: (v: number) => void;
   setMaxPrice: (v: number) => void;
   setInStockOnly: (v: boolean) => void;
@@ -44,7 +44,7 @@ export const useProductFilterStore = create<ProductFilterState>((set) => ({
   setSort: (sortBy) => set({ sortBy }),
   setOrder: (order) => set({ order }),
   setSearch: (search) => set({ search, skip: 1 }),
-  setPage: (skip) => set({ skip }),
+  setSkip: (skip) => set({ skip }),
   setInStockOnly: (inStockOnly) => set({ inStockOnly }),
   setPriceSort: (priceSort) => set({ priceSort }),
   setBrands: (brands) => set({ brands }),

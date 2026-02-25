@@ -2,10 +2,12 @@ import { ProductsWrapper } from './ProductsWrapper.tsx';
 import { useSortedProducts } from '../../../hooks/useSortedProducts.ts';
 import { ProductsHeader } from './ProductsHeader.tsx';
 import { ProductsFilter } from './ProductsFilter.tsx';
+import { Pagination } from '../../common/Pagination.tsx';
+import { useProductFilterStore } from '../../../store/product-filter.ts';
 
 export function ProductPage() {
   const { data, isLoading, isFetching } = useSortedProducts();
-
+  const { setSkip, skip } = useProductFilterStore();
   const products = data?.data;
 
   return (
@@ -17,6 +19,14 @@ export function ProductPage() {
         </div>
       </div>
       {products ? <ProductsWrapper products={products.products} /> : null}
+      {products ? (
+        <Pagination
+          maxVisible={6}
+          currentPage={skip}
+          totalPages={products.total}
+          onPageChange={setSkip}
+        />
+      ) : null}
     </div>
   );
 }
