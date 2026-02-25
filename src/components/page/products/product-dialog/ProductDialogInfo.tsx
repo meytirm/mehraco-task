@@ -1,8 +1,8 @@
-import type { Product } from '../../../services/products/products.type.ts';
-import { Badge } from '../../ui/Badge.tsx';
+import type { Product } from '../../../../services/products/products.type.ts';
+import { Badge } from '../../../ui/Badge.tsx';
 import { BadgeCheck, HeartIcon, Package2Icon, StarIcon, TruckIcon } from 'lucide-react';
-import { ProductDiscount } from './ProductDiscount.tsx';
-import { Button } from '../../ui/Button.tsx';
+import { ProductDiscount } from '../ProductDiscount.tsx';
+import { Button } from '../../../ui/Button.tsx';
 
 export function ProductDialogInfo({ product }: Readonly<Props>) {
   const rating = Math.floor(product.rating * 10) / 10; // 4.64 to 4.6

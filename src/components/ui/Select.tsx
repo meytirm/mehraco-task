@@ -7,20 +7,20 @@ import ReactSelect, {
 } from 'react-select';
 import { ChevronDownIcon, XIcon } from 'lucide-react';
 
-export type OptionType = {
+export type DefaultOption = {
   label: string;
   value: string;
 };
 
-type BaseSelectProps<IsMulti extends boolean = false> = ReactSelectProps<
-  OptionType,
+type BaseSelectProps<Option = DefaultOption, IsMulti extends boolean = false> = ReactSelectProps<
+  Option,
   IsMulti,
-  GroupBase<OptionType>
+  GroupBase<Option>
 >;
 
 // Custom Dropdown Indicator
-function DropdownIndicator<IsMulti extends boolean = false>(
-  props: DropdownIndicatorProps<OptionType, IsMulti>,
+function DropdownIndicator<Option = DefaultOption, IsMulti extends boolean = false>(
+  props: DropdownIndicatorProps<Option, IsMulti>,
 ) {
   return (
     <components.DropdownIndicator {...props} className="cursor-pointer">
@@ -30,8 +30,8 @@ function DropdownIndicator<IsMulti extends boolean = false>(
 }
 
 // Custom Clear Indicator
-function ClearIndicator<IsMulti extends boolean = false>(
-  props: ClearIndicatorProps<OptionType, IsMulti>,
+function ClearIndicator<Option = DefaultOption, IsMulti extends boolean = false>(
+  props: ClearIndicatorProps<Option, IsMulti>,
 ) {
   return (
     <components.ClearIndicator {...props} className="cursor-pointer">
@@ -40,13 +40,15 @@ function ClearIndicator<IsMulti extends boolean = false>(
   );
 }
 
-export function Select<IsMulti extends boolean = false>({ ...props }: BaseSelectProps<IsMulti>) {
+export function Select<Option = DefaultOption, IsMulti extends boolean = false>({
+  ...props
+}: BaseSelectProps<Option, IsMulti>) {
   return (
-    <ReactSelect
+    <ReactSelect<Option, IsMulti, GroupBase<Option>>
       unstyled
       className="border border-divider rounded-2xl text-foreground"
       classNames={{
-        indicatorsContainer: () => 'flex gap-1',
+        indicatorsContainer: () => 'flex gap-1 ml-2',
         valueContainer: () => 'flex gap-2',
         multiValue: () => 'bg-divider text-foreground px-1 rounded-sm flex gap-2',
         multiValueRemove: () => 'text-muted cursor-pointer hover:text-red-600',

@@ -5,7 +5,7 @@ import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-import type { Product } from '../../../services/products/products.type.ts';
+import type { Product } from '../../../../services/products/products.type.ts';
 export function ProductDialogSwiper({ product }: Readonly<Props>) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState<number>(0);

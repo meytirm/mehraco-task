@@ -46,3 +46,9 @@ interface Meta {
   qrCode: string;
 }
 export type ProductsType = PaginatedResponse<{ products: Product[] }>;
+
+export type Category = {
+  slug: string;
+  name: string;
+  url: string;
+};

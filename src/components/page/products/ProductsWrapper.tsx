@@ -1,6 +1,6 @@
 import type { Product } from '../../../services/products/products.type.ts';
 import { ProductCard } from './ProductCard.tsx';
-import { ProductDialog } from './ProductDialog.tsx';
+import { ProductDialog } from './product-dialog/ProductDialog.tsx';
 import { useState } from 'react';
 import { useProduct } from '../../../hooks/useProduct.ts';
 
