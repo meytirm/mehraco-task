@@ -1,44 +1,22 @@
-import { SearchInput } from '../../common/SearchInput.tsx';
-import { useFilteredProducts } from '../../../hooks/useFilteredProducts.ts';
-import { Select } from '../../ui/Select.tsx';
-import { Switch } from '../../ui/Switch.tsx';
 import { ProductsWrapper } from './ProductsWrapper.tsx';
-import PriceRangeSlider from '../../common/PriceRangeSlider.tsx';
+import { useSortedProducts } from '../../../hooks/useSortedProducts.ts';
+import { ProductsHeader } from './ProductsHeader.tsx';
+import { ProductsFilter } from './ProductsFilter.tsx';
 
 export function ProductPage() {
-  const { data, isFetching, isLoading, isError } = useFilteredProducts();
+  const { data, isLoading, isFetching } = useSortedProducts();
 
   const products = data?.data;
-  let minPrice = 0;
-  let maxPrice = 1;
-  if (products) {
-    const prices = products.products.map((product) => product.price);
-    minPrice = Math.min(...prices);
-    maxPrice = Math.max(...prices);
-  }
+
   return (
-    <div>
-      <div className="products-header">
-        <span>{products && products.total} Products</span>
-        <div className="grow">
-          <SearchInput />
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8">
+        <ProductsHeader total={products ? products.total : 0} loading={isLoading || isFetching} />
+        <div className="product-filter-container">
+          <ProductsFilter loading={isLoading || isFetching} products={products?.products} />
         </div>
       </div>
-      <Select
-        placeholder={'price'}
-        isSearchable={false}
-        isClearable
-        isMulti
-        options={[
-          { label: 'asc', value: 'asc' },
-          { label: 'desc', value: 'desc' },
-        ]}
-      />
-      {(isFetching || isLoading) && 'loading...'}
-      {isError && 'error'}
-      <Switch label={'in stock'} />
-      {products && <ProductsWrapper products={products.products} />}
-      <PriceRangeSlider min={minPrice} max={maxPrice} />
+      {products ? <ProductsWrapper products={products.products} /> : null}
     </div>
   );
 }
