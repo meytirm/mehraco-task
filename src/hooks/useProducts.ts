@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useProductFilterStore } from '../store/product-filter';
 import { productsService } from '../services/products/products';
 import { useDebounce } from './useDebounce';
@@ -19,7 +19,6 @@ export const useProducts = () => {
         skip,
         limit,
       }),
-    placeholderData: keepPreviousData,
     staleTime: 1000 * 30,
   });
 };
