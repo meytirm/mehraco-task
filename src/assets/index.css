@@ -48,7 +48,7 @@ body {
 
 /*PriceRangeSlider*/
 .price-range-slider {
-  @apply flex flex-col w-40 ;
+  @apply flex flex-col w-60 gap-4;
 }
 
 .price-range-slider-inputs {
@@ -57,10 +57,6 @@ body {
   div {
     @apply w-full;
   }
-}
-
-.price-range-slider-values {
-  @apply flex justify-between mt-4 font-semibold;
 }
 
 /* Switch */
