@@ -4,8 +4,8 @@ import { ProductsHeader } from './ProductsHeader.tsx';
 import { ProductsFilter } from './ProductsFilter.tsx';
 import { Pagination } from '../../common/Pagination.tsx';
 import { useProductFilterStore } from '../../../store/product-filter.ts';
-import { Button } from '../../ui/Button.tsx';
 import Skeleton from 'react-loading-skeleton';
+import { FetchErrorMessage } from '../../common/FetchErrorMessage.tsx';
 
 export function ProductPage() {
   const { data, isLoading, isFetching, isError, refetch } = useSortedProducts();
@@ -21,12 +21,10 @@ export function ProductPage() {
         </div>
       </div>
       {isError ? (
-        <div className="flex flex-col items-center justify-center border border-muted rounded-xl p-4 gap-2 bg-white">
-          <div className="text-red-600">Something went wrong while fetching products.</div>
-          <Button onClick={() => refetch()} className={'bg-muted'}>
-            <span>Retry!</span>
-          </Button>
-        </div>
+        <FetchErrorMessage
+          refetch={() => refetch()}
+          errorMessage={'Something went wrong while fetching products.'}
+        />
       ) : (
         <ProductsWrapper products={products?.products} isLoading={isLoading} />
       )}
