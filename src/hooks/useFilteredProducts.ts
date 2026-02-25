@@ -22,7 +22,7 @@ export const useFilteredProducts = () => {
     });
 
     return { ...data, data: { ...data.data, products: items } };
-  }, [data, debouncedMinPrice, debouncedMaxPrice, selectedBrands, inStockOnly]);
+  }, [data, debouncedMinPrice, debouncedMaxPrice, selectedBrands, inStockOnly, minPrice, maxPrice]);
 
   return { data: filteredData, ...rest };
 };
