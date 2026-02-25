@@ -4,7 +4,6 @@ import { Select } from '../../ui/Select.tsx';
 import { Switch } from '../../ui/Switch.tsx';
 import { ProductsWrapper } from './ProductsWrapper.tsx';
 import PriceRangeSlider from '../../common/PriceRangeSlider.tsx';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 export function ProductPage() {
   const { data, isFetching, isLoading, isError } = useFilteredProducts();
