@@ -24,7 +24,7 @@ body {
 }
 
 .products-header {
-  @apply flex gap-10 items-center;
+  @apply grid grid-cols-12 items-center;
 }
 
 /* Dialog */
