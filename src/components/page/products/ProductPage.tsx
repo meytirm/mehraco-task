@@ -4,9 +4,11 @@ import { ProductsHeader } from './ProductsHeader.tsx';
 import { ProductsFilter } from './ProductsFilter.tsx';
 import { Pagination } from '../../common/Pagination.tsx';
 import { useProductFilterStore } from '../../../store/product-filter.ts';
+import { Button } from '../../ui/Button.tsx';
+import Skeleton from 'react-loading-skeleton';
 
 export function ProductPage() {
-  const { data, isLoading, isFetching } = useSortedProducts();
+  const { data, isLoading, isFetching, isError, refetch } = useSortedProducts();
   const { setSkip, skip } = useProductFilterStore();
   const products = data?.data;
 
@@ -18,15 +20,30 @@ export function ProductPage() {
           <ProductsFilter loading={isLoading || isFetching} products={products?.products} />
         </div>
       </div>
-      {products ? <ProductsWrapper products={products.products} /> : null}
-      {products ? (
-        <Pagination
-          maxVisible={6}
-          currentPage={skip}
-          totalPages={products.total}
-          onPageChange={setSkip}
-        />
-      ) : null}
+      {isError ? (
+        <div className="flex flex-col items-center justify-center border border-muted rounded-xl p-4 gap-2 bg-white">
+          <div className="text-red-600">Something went wrong while fetching products.</div>
+          <Button onClick={() => refetch()} className={'bg-muted'}>
+            <span>Retry!</span>
+          </Button>
+        </div>
+      ) : (
+        <ProductsWrapper products={products?.products} isLoading={isLoading} />
+      )}
+      {isLoading || isFetching ? (
+        <Skeleton width={'100%'} height={50} />
+      ) : (
+        <div className="flex justify-center my-4">
+          {products && (
+            <Pagination
+              maxVisible={6}
+              currentPage={skip}
+              totalPages={products.total}
+              onPageChange={setSkip}
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 }
