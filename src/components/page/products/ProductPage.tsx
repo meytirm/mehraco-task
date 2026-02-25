@@ -9,7 +9,7 @@ import Skeleton from 'react-loading-skeleton';
 
 export function ProductPage() {
   const { data, isLoading, isFetching, isError, refetch } = useSortedProducts();
-  const { setSkip, skip } = useProductFilterStore();
+  const { setSkip, skip, setMaxPrice, setMinPrice } = useProductFilterStore();
   const products = data?.data;
 
   return (
@@ -39,7 +39,11 @@ export function ProductPage() {
               maxVisible={6}
               currentPage={skip}
               totalPages={products.total}
-              onPageChange={setSkip}
+              onPageChange={(value) => {
+                setSkip(value);
+                setMinPrice(null);
+                setMaxPrice(null);
+              }}
             />
           )}
         </div>
