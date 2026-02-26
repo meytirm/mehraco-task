@@ -20,11 +20,19 @@
 }
 
 body {
-  @apply bg-surface text-foreground container;
+  @apply bg-surface text-foreground;
+}
+
+#root {
+  @apply container;
 }
 
 .products-header {
   @apply grid grid-cols-12 items-center gap-4;
+}
+
+.product-filter-container {
+  @apply md:block hidden;
 }
 
 /* Dialog */
@@ -48,7 +56,7 @@ body {
 
 /*PriceRangeSlider*/
 .price-range-slider {
-  @apply flex flex-col w-60 gap-4;
+  @apply flex flex-col gap-4 md:w-60 w-[80%] md:mt-0 mt-6;
 }
 
 .price-range-slider-inputs {
@@ -129,12 +137,12 @@ body {
 
 /*Product Dialog*/
 .product-dialog-content {
-  @apply flex gap-8;
+  @apply flex md:flex-row flex-col-reverse gap-8;
 }
 
 /* ProductDialogInfo */
 .product-dialog-info {
-  @apply flex flex-col justify-between h-full;
+  @apply flex flex-col justify-between h-full md:gap-0 gap-4;
 }
 
 .product-dialog-info-category {

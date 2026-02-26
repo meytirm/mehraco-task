@@ -7,7 +7,9 @@ export function Badge({ variant = 'default', children }: Readonly<Props>) {
     danger: 'bg-red-100 text-red-600',
   };
   return (
-    <div className={`px-4 py-1 rounded-xl inline-block ${variants[variant]}`}>
+    <div
+      className={`md:px-4 px-2 py-1 rounded-xl inline-block md:text-base text-xs ${variants[variant]}`}
+    >
       <span>{children}</span>
     </div>
   );

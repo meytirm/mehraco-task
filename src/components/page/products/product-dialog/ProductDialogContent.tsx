@@ -13,11 +13,11 @@ export function ProductDialogContent({ isLoading = false, product }: Readonly<Pr
   if (isLoading) {
     return (
       <div className="product-dialog-content">
-        <div className="w-[50%] flex flex-col gap-4">
+        <div className="md:w-[50%] w-full flex flex-col gap-4">
           <Skeleton width={'100%'} height={400} />
           <Skeleton width={'100%'} height={150} />
         </div>
-        <div className="w-[50%] flex flex-col gap-4">
+        <div className="md:w-[50%] w-full flex flex-col gap-4">
           <Skeleton width={'100%'} height={100} />
           <Skeleton width={'100%'} count={4} />
           <Skeleton width={'100%'} count={2} />
@@ -33,10 +33,10 @@ export function ProductDialogContent({ isLoading = false, product }: Readonly<Pr
   }
   return (
     <div className="product-dialog-content">
-      <div className="w-[50%]">
+      <div className="md:w-[50%] w-full">
         <ProductDialogSwiper product={product} />
       </div>
-      <div className="w-[50%]">
+      <div className="md:w-[50%] w-full">
         <ProductDialogInfo product={product} />
       </div>
     </div>
