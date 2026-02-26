@@ -13,7 +13,6 @@ export const useFilteredProducts = () => {
   const filteredData = useMemo(() => {
     if (!data?.data.products) return data;
     const items = data.data.products.filter((product) => {
-      console.log(debouncedMinPrice);
       if (debouncedMinPrice && product.price < debouncedMinPrice) return false;
       if (debouncedMaxPrice && product.price > debouncedMaxPrice) return false;
       if (selectedBrands.length > 0 && !selectedBrands.some((sb) => product.brand === sb.value))
