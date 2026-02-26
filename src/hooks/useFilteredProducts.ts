@@ -13,8 +13,8 @@ export const useFilteredProducts = () => {
   const filteredData = useMemo(() => {
     if (!data?.data.products) return data;
     const items = data.data.products.filter((product) => {
-      if (minPrice && debouncedMinPrice && product.price < debouncedMinPrice) return false;
-      if (maxPrice && debouncedMaxPrice && product.price > debouncedMaxPrice) return false;
+      if (debouncedMinPrice && product.price < debouncedMinPrice) return false;
+      if (debouncedMaxPrice && product.price > debouncedMaxPrice) return false;
       if (selectedBrands.length > 0 && !selectedBrands.some((sb) => product.brand === sb.value))
         return false;
       if (!inStockOnly && product.stock <= 0) return false;
