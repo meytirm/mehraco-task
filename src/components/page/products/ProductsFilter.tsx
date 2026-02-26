@@ -40,7 +40,7 @@ export function ProductsFilter({ loading }: Readonly<Props>) {
   const { calculatedMinPrice, calculatedMaxPrice } = useMinMaxPrices();
 
   return (
-    <div className="flex flex-col md:gap-16 gap-4">
+    <div className="flex md:flex-col flex-col-reverse md:gap-16 gap-6">
       <div className="md:hidden block">
         <InStockSwitch loading={loading} value={inStockOnly} onChange={setInStockOnly} />
       </div>
