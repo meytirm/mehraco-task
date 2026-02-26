@@ -2,12 +2,11 @@ import { Select } from '../../ui/Select.tsx';
 import { type ProductFilterState, useProductFilterStore } from '../../../store/product-filter.ts';
 import { useBrands } from '../../../hooks/useBrands.ts';
 import { useCategories } from '../../../hooks/useCategories.ts';
-import { Switch } from '../../ui/Switch.tsx';
 import PriceRangeSlider from '../../common/PriceRangeSlider.tsx';
-import type { Product } from '../../../services/products/products.type.ts';
 import { useMinMaxPrices } from '../../../hooks/useMinMaxPrices.ts';
 import Skeleton from 'react-loading-skeleton';
 import { Button } from '../../ui/Button.tsx';
+import { InStockSwitch } from './InStockSwitch.tsx';
 
 const orderIdOptions = [
   { label: 'Newest', value: 'asc' },
@@ -41,9 +40,12 @@ export function ProductsFilter({ loading }: Readonly<Props>) {
   const { calculatedMinPrice, calculatedMaxPrice } = useMinMaxPrices();
 
   return (
-    <div className="flex flex-col gap-16">
-      <div className="flex items-center justify-between">
-        <div className="grid grid-cols-5 gap-2 grow">
+    <div className="flex flex-col md:gap-16 gap-4">
+      <div className="md:hidden block">
+        <InStockSwitch loading={loading} value={inStockOnly} onChange={setInStockOnly} />
+      </div>
+      <div className="flex items-center justify-between gap-2">
+        <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-2 grow">
           <div className="col-span-1">
             <Select
               isLoading={loading}
@@ -112,29 +114,25 @@ export function ProductsFilter({ loading }: Readonly<Props>) {
             />
           </div>
         </div>
-        {loading ? (
-          <Skeleton height={50} width={150} />
-        ) : (
-          <Switch
-            label={'in stock'}
-            value={inStockOnly}
-            onChange={(value) => setInStockOnly(value)}
-          />
-        )}
+        <div className="md:block hidden">
+          <InStockSwitch loading={loading} value={inStockOnly} onChange={setInStockOnly} />
+        </div>
       </div>
       <div className="flex flex-row-reverse">
         {loading ? (
           <Skeleton height={50} width={250} />
         ) : (
-          <PriceRangeSlider
-            min={calculatedMinPrice}
-            max={calculatedMaxPrice}
-            values={[minPrice ?? calculatedMinPrice, maxPrice ?? calculatedMaxPrice]}
-            onChange={(values) => {
-              setMinPrice(values[0]);
-              setMaxPrice(values[1]);
-            }}
-          />
+          <div className="md:block flex justify-center md:w-auto w-full">
+            <PriceRangeSlider
+              min={calculatedMinPrice}
+              max={calculatedMaxPrice}
+              values={[minPrice ?? calculatedMinPrice, maxPrice ?? calculatedMaxPrice]}
+              onChange={(values) => {
+                setMinPrice(values[0]);
+                setMaxPrice(values[1]);
+              }}
+            />
+          </div>
         )}
       </div>
     </div>
@@ -143,5 +141,4 @@ export function ProductsFilter({ loading }: Readonly<Props>) {
 
 interface Props {
   loading: boolean;
-  products?: Product[];
 }

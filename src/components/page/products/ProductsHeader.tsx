@@ -7,10 +7,10 @@ export function ProductsHeader({ total, loading = false }: Readonly<Props>) {
 
   return (
     <div className="products-header">
-      <span className="col-span-2">
+      <span className="lg:col-span-2 lg:block hidden">
         {loading ? <Skeleton height={50} /> : <span>{total} Products</span>}
       </span>
-      <div className="col-span-10">
+      <div className="lg:col-span-10 col-span-12">
         <SearchInput onSearch={(query) => setSearch(query)} value={search} />
       </div>
     </div>
