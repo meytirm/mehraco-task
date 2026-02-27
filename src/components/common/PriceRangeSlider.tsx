@@ -48,12 +48,14 @@ export default function PriceRangeSlider({ min, max, onChange, values }: Readonl
 
       <div className="price-range-slider-inputs">
         <Input
+          type="number"
           value={values[0]}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             handleInput(e, 'min');
           }}
         />
         <Input
+          type="number"
           value={values[1]}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInput(e, 'max')}
         />

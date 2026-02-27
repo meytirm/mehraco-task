@@ -35,7 +35,7 @@ const RangeSlider: React.FC<RangeSliderProps> = ({
           return (
             <div
               {...props}
-              className="h-2 w-full rounded-full"
+              className="h-2 w-full rounded-full relative"
               style={{
                 background: getTrackBackground({
                   values,
