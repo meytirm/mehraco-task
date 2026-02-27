@@ -38,7 +38,7 @@ export default function FilterDrawer({ loading = false }: Readonly<Props>) {
           </div>
 
           {/* scrollable area */}
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto pt-2">
             <ProductsFilter loading={loading} />
           </div>
         </Drawer.Content>
