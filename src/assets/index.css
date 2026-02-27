@@ -104,7 +104,7 @@ body {
 
 /*Product Card*/
 .product-card {
-  @apply bg-white rounded-2xl bg-white h-[375px] p-6;
+  @apply bg-white rounded-2xl bg-white h-[375px] p-6 cursor-pointer;
 }
 
 .product-image {
