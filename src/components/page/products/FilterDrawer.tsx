@@ -24,7 +24,7 @@ export default function FilterDrawer({ loading = false }: Readonly<Props>) {
           className="
             fixed bottom-0 left-0 right-0
             bg-white rounded-t-2xl
-            p-6 h-[70vh] flex flex-col
+            p-6 h-[70dvh] flex flex-col
           "
         >
           <div className="mx-auto w-12 h-1.5 bg-gray-300 rounded mb-4" />
